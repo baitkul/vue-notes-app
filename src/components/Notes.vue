@@ -49,17 +49,21 @@ export default {
   },
 
   mounted() {
-    const cached = this.$forage.get('notes')
+    const cachedNotes = this.$forage.get('notes')
+    const cachedLocale = this.$forage.get('locale')
 
-    if (Array.isArray(cached)) {
-      this.notes = cached
+    if (Array.isArray(cachedNotes)) {
+      this.notes = cachedNotes
     }
 
-    window.addEventListener('beforeunload', this.cacheNotes)
+    if (typeof cachedLocale === 'string') {
+      this.$i18n.locale = cachedLocale
+    }
+
+    window.addEventListener('beforeunload', this.cacheData)
 
     this.$once('hook:beforeDestroy', () => {
-      this.cacheNotes()
-      window.removeEventListener('beforeunload', this.cacheNotes)
+      window.removeEventListener('beforeunload', this.cacheData)
     })
   },
 
@@ -94,6 +98,15 @@ export default {
 
     cacheNotes() {
       this.$forage.set('notes', this.notes)
+    },
+
+    cacheLocale() {
+      this.$forage.set('locale', this.$i18n.locale)
+    },
+
+    cacheData() {
+      this.cacheNotes()
+      this.cacheLocale()
     }
   }
 }
