@@ -4,6 +4,7 @@
       <Aside
         class="w-1/4"
         :list="notes"
+        :active-id="activeNoteId"
         @create="onCreateNote"
         @select="onSelectNote"
         @remove="onRemoveNote"
@@ -34,6 +35,16 @@ export default {
     return {
       notes: [],
       activeNote: undefined,
+    }
+  },
+
+  computed: {
+    activeNoteId() {
+      if (!this.activeNote) {
+        return ''
+      }
+
+      return this.activeNote.id
     }
   },
 

@@ -21,8 +21,8 @@
         class="flex items-center h-12 text-xs bg-white border-b border-gray-300 cursor-pointer"
       >
         <div
-          class="flex flex-col justify-between h-full py-1 pl-3"
-          :class="{'w-4/5': editMode, 'w-full': !editMode}"
+          class="flex flex-col justify-between h-full py-1 pl-3 border-l-4 border-transparent"
+          :class="{'w-4/5': editMode, 'w-full': !editMode, 'border-blue-500': isItemActive(item.id)}"
           @click="$emit('select', item)"
         >
           <span class="w-full text-sm font-medium text-gray-800 truncate whitespace-no-wrap">
@@ -49,6 +49,11 @@ export default {
     list: {
       type: Array,
       default: () => []
+    },
+
+    activeId: {
+      type: String,
+      default: '',
     }
   },
 
@@ -79,6 +84,10 @@ export default {
 
     createItem() {
       this.$emit('create')
+    },
+
+    isItemActive(id) {
+      return this.activeId === id
     }
   }
 }
