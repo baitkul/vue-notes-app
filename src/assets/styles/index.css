@@ -3,3 +3,22 @@
 @tailwind utilities;
 
 @import '~@fortawesome/fontawesome-free/css/all.css';
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('~@/assets/fonts/Roboto-Regular.ttf');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('~@/assets/fonts/Roboto-Medium.ttf');
+  font-weight: 500;
+  font-style: normal;
+}
+
+body {
+  @apply text-gray-800;
+  font-family: 'Roboto', sans-serif !important;
+}
