@@ -9,18 +9,24 @@
       <span class="flex-1 text-sm text-center">
         notes-app
       </span>
-      <span class="text-xs">
+      <span class="flex text-xs">
         <span
-          class="px-2 py-1 rounded cursor-pointer"
+          class="flex items-center px-2 py-1 rounded cursor-pointer"
           :class="{'bg-gray-100 shadow-xl': $i18n.locale === 'ru'}"
           @click="setLocale('ru')"
-        >рус</span>
+        >
+          <img src="https://www.countryflags.io/ru/shiny/16.png" class="h-4 mr-1" />
+          рус
+        </span>
 
         <span
-          class="px-2 py-1 rounded cursor-pointer"
+          class="flex items-center px-2 py-1 rounded cursor-pointer"
           :class="{'bg-gray-100 shadow-xl': $i18n.locale === 'en'}"
           @click="setLocale('en')"
-        >eng</span>
+        >
+          <img src="https://www.countryflags.io/us/shiny/16.png" class="h-4 mr-1" />
+          eng
+        </span>
       </span>
     </div>
 
