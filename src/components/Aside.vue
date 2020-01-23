@@ -28,9 +28,9 @@
           <span class="w-full text-sm font-medium text-gray-800 truncate whitespace-no-wrap">
             {{ item.title || ' - '}}
           </span>
-          <span class="flex justify-between text-gray-600">
-            <span>{{ item.createdAt | date }}</span>
-            <span>{{ (item.body || ' - ') | trunc(25) }}</span>
+          <span class="flex text-gray-600">
+            <span class="w-2/5">{{ item.createdAt | date }}</span>
+            <span class="w-3/5 truncate whitespace-no-wrap">{{ item.body | trunc(25) }}</span>
           </span>
         </div>
 
