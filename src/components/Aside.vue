@@ -1,16 +1,22 @@
 <template>
   <div class="flex flex-col h-full max-h-full overflow-y-auto border-r border-gray-400 ">
     <div class="flex items-center justify-between p-2">
-      <span class="w-1/6 px-3 py-1 text-sm text-center text-gray-700 cursor-pointer hover:text-gray-600" @click="createItem">
+      <span
+        class="flex items-center justify-center w-8 h-8 text-xs leading-none text-center text-gray-700 bg-white rounded-full shadow-md cursor-pointer hover:text-gray-900"
+        @click="createItem"
+      >
         <i class="fa fa-plus"></i>
       </span>
 
       <span
-        class="w-1/6 px-3 py-1 text-sm text-center"
-        :class="{'text-gray-500 cursor-not-allowed': listIsEmpty, 'cursor-pointer text-gray-700 hover:text-gray-600': !listIsEmpty}"
+        class="flex items-center justify-center w-8 h-8 text-xs leading-none text-center bg-white rounded-full shadow-md"
+        :class="{
+          'text-gray-500 cursor-not-allowed': listIsEmpty,
+          'cursor-pointer text-gray-700 hover:text-gray-900': !listIsEmpty
+        }"
         @click="toggleEdit"
       >
-        <i :class="editMode ? 'fa fa-times' : 'fa fa-edit'"></i>
+        <i :class="editMode ? 'fa fa-times' : 'fa fa-pen'"></i>
       </span>
     </div>
 
@@ -82,6 +88,10 @@ export default {
 
   methods: {
     toggleEdit() {
+      if (this.listIsEmpty) {
+        return false
+      }
+
       this.editMode = !this.editMode
     },
 
