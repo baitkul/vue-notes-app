@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col h-full p-2 text-gray-700">
+  <div class="flex flex-col h-full p-2 text-gray-700 bg-gray-100">
     <template v-if="model">
       <input
         v-model="model.title"
