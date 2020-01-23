@@ -8,7 +8,7 @@ export default new VueI18n({
   fallbackLocale: 'en',
   messages: {
     en: {
-      'not-selected': 'Select note or create note',
+      'not-selected': 'Select or create new note',
       'enter-title': 'Enter title',
       'enter-body': 'Enter text',
     },
