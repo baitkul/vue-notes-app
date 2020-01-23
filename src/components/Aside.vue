@@ -21,14 +21,17 @@
         class="flex items-center h-12 text-xs bg-white border-b border-gray-300 cursor-pointer"
       >
         <div
-          class="flex flex-col justify-between h-full py-1 pl-3 border-l-4 border-transparent"
+          class="flex flex-col justify-between h-full px-3 py-1 border-l-4 border-transparent"
           :class="{'w-4/5': editMode, 'w-full': !editMode, 'border-blue-500': isItemActive(item.id)}"
           @click="$emit('select', item)"
         >
           <span class="w-full text-sm font-medium text-gray-800 truncate whitespace-no-wrap">
             {{ item.title || ' - '}}
           </span>
-          <span class="text-gray-600">{{ item.createdAt | date }}</span>
+          <span class="flex justify-between text-gray-600">
+            <span>{{ item.createdAt | date }}</span>
+            <span>{{ (item.body || ' - ') | trunc(25) }}</span>
+          </span>
         </div>
 
         <div
