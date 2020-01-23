@@ -5,7 +5,7 @@
         class="flex items-center justify-center w-8 h-8 text-xs leading-none text-center text-gray-700 bg-white rounded-full shadow-md cursor-pointer hover:text-gray-900"
         @click="createItem"
       >
-        <i class="fa fa-plus"></i>
+        <f-icon icon="plus"/>
       </span>
 
       <span
@@ -16,7 +16,7 @@
         }"
         @click="toggleEdit"
       >
-        <i :class="editMode ? 'fa fa-times' : 'fa fa-pen'"></i>
+        <f-icon :icon="editMode ? 'times' : 'pen'"/>
       </span>
     </div>
 
@@ -45,7 +45,7 @@
           :class="{'w-1/5': editMode, 'w-0': !editMode}"
           @click="$emit('remove', item)"
         >
-          <i class="fa fa-trash"></i>
+          <f-icon icon="trash"/>
         </div>
       </div>
     </div>

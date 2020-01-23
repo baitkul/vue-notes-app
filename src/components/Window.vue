@@ -2,9 +2,9 @@
   <div class="flex flex-col overflow-hidden bg-white rounded shadow-xl" :style="styles">
     <div class="flex items-center w-full h-8 px-2 py-1 bg-gray-400 border-b border-gray-500">
       <span class="text-xs">
-        <i class="text-red-500 fa fa-circle"></i>
-        <i class="mx-1 text-yellow-500 fa fa-circle"></i>
-        <i class="text-green-500 fa fa-circle"></i>
+        <f-icon class="text-red-500" icon="circle"/>
+        <f-icon class="mx-1 text-yellow-500" icon="circle"/>
+        <f-icon class="text-green-500" icon="circle"/>
       </span>
       <span class="flex-1 text-sm text-center">
         notes-app
