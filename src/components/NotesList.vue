@@ -54,8 +54,6 @@
 </template>
 
 <script>
-import { orderBy } from 'lodash-es'
-
 export default {
   props: {
     notes: {
@@ -73,7 +71,7 @@ export default {
   computed: {
     filteredNotes() {
       if (!this.searchStr) {
-        return orderBy(this.notes, ['createdAt'], ['desc'])
+        return this.$_.orderBy(this.notes, ['createdAt'], ['desc'])
       }
 
       const filtered = this.notes.filter(item => {
@@ -81,7 +79,7 @@ export default {
           item.body.toLowerCase().includes(this.searchStr.toLowerCase())
       })
 
-      return orderBy(filtered, ['createdAt'], ['desc'])
+      return this.$_.orderBy(filtered, ['createdAt'], ['desc'])
     },
   },
 

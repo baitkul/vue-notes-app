@@ -1,6 +1,8 @@
 import Vue from 'vue'
-import { get, truncate } from 'lodash-es'
-import { format, parseISO } from 'date-fns'
+import get from 'lodash-es/get'
+import truncate from 'lodash-es/truncate'
+import format from 'date-fns/format'
+import parseISO from 'date-fns/parseISO'
 import ruLocale from 'date-fns/locale/ru'
 
 const filters = {}
