@@ -27,6 +27,7 @@ npm run lint
 ```
 
 ### TO-DO
+- Add tests
 - Add reminders
 - Add notes sharing
 - Add responsive version and make it pwa
