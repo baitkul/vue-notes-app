@@ -1,7 +1,7 @@
 <template>
-  <div class="flex flex-col w-64 h-full pr-2 bg-white border-r border-gray-300">
+  <div class="flex flex-col w-64 h-full pt-2 pr-2 bg-white border-r border-gray-300">
     <!-- logo -->
-    <div class="flex items-center py-4 pl-4">
+    <div class="flex items-center p-4">
       <img
         src="@/assets/logo.png"
         alt="logo"
