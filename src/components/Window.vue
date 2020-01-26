@@ -1,38 +1,6 @@
 <template>
-  <div class="flex flex-col overflow-hidden bg-white rounded shadow-xl" :style="styles">
-    <div class="flex items-center w-full h-8 px-2 py-1 bg-gray-400 border-b border-gray-500">
-      <span class="text-xs">
-        <f-icon class="text-red-500" icon="circle"/>
-        <f-icon class="mx-1 text-yellow-500" icon="circle"/>
-        <f-icon class="text-green-500" icon="circle"/>
-      </span>
-      <span class="flex-1 text-sm text-center">
-        notes-app
-      </span>
-      <span class="flex text-xs">
-        <span
-          class="flex items-center px-2 py-1 rounded cursor-pointer"
-          :class="{'bg-gray-100 shadow-xl': $i18n.locale === 'ru'}"
-          @click="setLocale('ru')"
-        >
-          <img src="https://www.countryflags.io/ru/shiny/16.png" class="h-4 mr-1" />
-          рус
-        </span>
-
-        <span
-          class="flex items-center px-2 py-1 rounded cursor-pointer"
-          :class="{'bg-gray-100 shadow-xl': $i18n.locale === 'en'}"
-          @click="setLocale('en')"
-        >
-          <img src="https://www.countryflags.io/us/shiny/16.png" class="h-4 mr-1" />
-          eng
-        </span>
-      </span>
-    </div>
-
-    <div class="flex-1 w-full overflow-hidden bg-gray-200 ">
-      <slot></slot>
-    </div>
+  <div class="overflow-hidden bg-gray-200 rounded shadow-xl" :style="styles">
+    <slot></slot>
   </div>
 </template>
 
