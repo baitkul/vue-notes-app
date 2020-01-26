@@ -25,3 +25,9 @@ npm run test:unit
 npm run lint
 
 ```
+
+### TO-DO
+- Add reminders
+- Add notes sharing
+- Add responsive version and make it pwa
+- Add notifications for reminders
