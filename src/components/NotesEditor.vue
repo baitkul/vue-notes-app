@@ -16,6 +16,7 @@
           class="w-full py-2 text-2xl bg-transparent border-b-2 border-gray-300"
           placeholder="Enter title"
           @keyup.enter="$refs.body.focus()"
+          @keyup.tab="$refs.body.focus()"
         />
       </div>
 
