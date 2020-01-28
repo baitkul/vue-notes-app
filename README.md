@@ -1,9 +1,13 @@
-# notes-app
+
+# Vue notes app
+
+![Deploy to GitHub Pages](https://github.com/baitkul/vue-notes-app/workflows/Deploy%20to%20GitHub%20Pages/badge.svg?event=push)
+
 Demo [link](https://baitkul.github.io/vue-notes-app/)
 
 ### Built using
-- Vue.js [link](https://vuejs.org)
-- Tailwindcss [link](https://tailwindcss.com/)
+- [Vue.js](https://vuejs.org)
+- [Tailwindcss](https://tailwindcss.com/)
 
 ### Behavior
 - Notes app saves your notes in local storage on window 'beforeunload' event
@@ -32,4 +36,3 @@ npm run lint
 - Add notes sharing
 - Add responsive version and make it pwa
 - Add notifications for reminders
-- Add github action
