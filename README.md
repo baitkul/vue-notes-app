@@ -32,3 +32,4 @@ npm run lint
 - Add notes sharing
 - Add responsive version and make it pwa
 - Add notifications for reminders
+- Add github action
