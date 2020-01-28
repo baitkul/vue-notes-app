@@ -73,6 +73,7 @@ export default {
         title: '',
         body: '',
         createdAt: new Date(),
+        pinned: false,
       }
 
       this.notes.push(note)
