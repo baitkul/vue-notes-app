@@ -20,7 +20,7 @@
 
     <!-- notes -->
     <div v-if="notes.length" class="overflow-y-auto">
-      <template v-if="pinnedNotes.length">
+      <template v-if="listsDivided">
         <h5 class="pl-2 mb-2 text-xs font-medium leading-none text-gray-500 uppercase">pinned</h5>
         <div class="flex flex-wrap">
           <NoteCard
@@ -117,6 +117,10 @@ export default {
     notPinnedNotes() {
       return this.filteredNotes.filter(item => !item.pinned)
     },
+
+    listsDivided() {
+      return this.pinnedNotes.length && !this.searchStr
+    }
   },
 
   mounted() {
