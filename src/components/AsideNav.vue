@@ -67,7 +67,7 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 export default {
   props: {
     remindersCount: {
@@ -78,9 +78,12 @@ export default {
 
   computed: {
     ...mapState([
-      'notesCount',
       'settingsDialogVisible'
-    ])
+    ]),
+
+    ...mapGetters([
+      'notesCount'
+    ]),
   },
 
   methods: {
