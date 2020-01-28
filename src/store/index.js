@@ -7,6 +7,7 @@ export default new Vuex.Store({
   state: {
     notesCount: 0,
     animateCreateButton: true,
+    settingsDialogVisible: false,
   },
 
   mutations: {
@@ -16,6 +17,10 @@ export default new Vuex.Store({
 
     TOGGLE_CREATE_BUTTON_ANIMATION(state, v) {
       state.animateCreateButton = v
+    },
+
+    TOGGLE_SETTINGS_DIALOG(state, v) {
+      state.settingsDialogVisible = v
     }
   },
 })

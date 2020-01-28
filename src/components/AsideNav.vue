@@ -46,7 +46,10 @@
 
     <!-- meta -->
     <div class="flex flex-col flex-1">
-      <div class="py-2 pl-4 mt-auto text-gray-400 text-gray-700 cursor-not-allowed select-none">
+      <div
+        class="py-2 pl-4 mt-auto text-gray-400 text-gray-700 cursor-pointer select-none"
+        @click="openSettingsDialog"
+      >
         <f-icon icon="cog"/>
         <span class="ml-4">Settings</span>
       </div>
@@ -75,13 +78,18 @@ export default {
 
   computed: {
     ...mapState([
-      'notesCount'
+      'notesCount',
+      'settingsDialogVisible'
     ])
   },
 
   methods: {
     isActiveLink(name) {
       return this.$route.name === name
+    },
+
+    openSettingsDialog() {
+      this.$store.commit('TOGGLE_SETTINGS_DIALOG', !this.settingsDialogVisible)
     }
   }
 }

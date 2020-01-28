@@ -4,8 +4,9 @@
       <div class="flex h-full overflow-hidden">
         <AsideNav />
 
-        <div class="flex-1 p-4">
+        <div class="relative flex-1 p-4">
           <router-view />
+          <SettingsDialog v-if="settingsDialogVisible" />
         </div>
       </div>
     </Window>
@@ -30,14 +31,26 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 import Window from '@/components/Window'
 import AsideNav from '@/components/AsideNav'
 
 export default {
   components: {
-    AsideNav,
     Window,
+    AsideNav,
+    SettingsDialog: () => import(
+      /*
+        webpackChunkName: "settings-dialog",
+        webpackPreload: true
+      */
+     '@/components/SettingsDialog'
+    ),
   },
+
+  computed: {
+    ...mapState(['settingsDialogVisible'])
+  }
 }
 </script>
 <style>
