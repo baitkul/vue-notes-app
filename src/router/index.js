@@ -12,12 +12,24 @@ const routes = [
   {
     path: '/notes',
     name: 'notes',
-    component: () => import(/* webpackChunkName: "notes" */ '@/views/Notes.vue')
+    component: () => import(
+      /*
+        webpackChunkName: "notes-page",
+        webpackPreload: true
+      */
+      '@/views/Notes.vue'
+    )
   },
   {
     path: '/reminders',
     name: 'reminders',
-    component: () => import(/* webpackChunkName: "reminders" */ '@/views/Reminders.vue')
+    component: () => import(
+      /*
+        webpackChunkName: "reminders-page",
+        webpackPrefetch: true
+      */
+     '@/views/Reminders.vue'
+    )
   },
 ]
 
