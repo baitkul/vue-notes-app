@@ -1,6 +1,6 @@
 <template>
   <div class="w-1/3 p-2 cursor-pointer select-none" @click="$emit('select', note)">
-    <div class="relative flex flex-col flex-grow-0 p-2 bg-white border border-gray-300 rounded">
+    <div class="relative flex flex-col flex-grow-0 p-2 overflow-hidden bg-white border border-gray-300 rounded hover:border-green-300">
       <h5 class="mb-2 text-sm font-medium">
         {{ (note.title || ' - ') | trunc(50) }}
       </h5>
