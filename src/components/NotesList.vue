@@ -63,7 +63,7 @@
 
     <div
       class="absolute flex items-center justify-center w-12 h-12 text-green-300 bg-white rounded-full shadow cursor-pointer hover:shadow-md hover:text-green-400"
-      :class="{'glowing': animateCreateButton && !filteredNotes.length}"
+      :class="{'pulse': animateCreateButton && !filteredNotes.length}"
       :style="{bottom: '5px', right: '5px'}"
       @click="createNewNote"
     >
@@ -142,21 +142,5 @@ export default {
 </script>
 
 <style>
-.glowing {
-  animation-name: glow;
-  animation-duration: 0.4s;
-  animation-iteration-count: 4;
-  animation-timing-function: ease-int-out;
-  animation-direction: alternate;
-}
 
-@keyframes glow {
-  from: {
-    box-shadow: 0px 0px 1px 15px rgba(104, 211, 145, 0.6);
-  }
-
-  to {
-    box-shadow: 0px 0px 1px 15px rgba(104, 211, 145, 0.6);
-  }
-}
 </style>
