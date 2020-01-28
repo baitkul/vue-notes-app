@@ -1,17 +1,21 @@
 import Vue from 'vue'
 
-class Forage {
+export class Forage {
 
   constructor() {
     this.store = window.localStorage
   }
 
-  get(key) {
+  get(key, defaultData = undefined) {
     if (!key) {
       throw new Error('Key param is required')
     }
 
     const item = this.store.getItem(key)
+
+    if (!item && defaultData) {
+      return defaultData
+    }
 
     try {
       return JSON.parse(item)
