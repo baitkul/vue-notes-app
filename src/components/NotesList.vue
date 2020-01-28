@@ -19,28 +19,42 @@
     </div>
 
     <!-- notes -->
-    <div v-if="filteredNotes.length" class="flex flex-wrap overflow-y-auto">
-      <div
-        v-for="note in filteredNotes"
-        :key="note.id"
-        class="w-1/3 p-2 cursor-pointer select-none"
-        @click="selectNote(note)"
-      >
-        <div class="relative flex flex-col flex-grow-0 p-2 bg-white border border-gray-300 rounded">
-          <h5 class="mb-2 text-sm font-medium">
-            {{ (note.title || ' - ') | trunc(50) }}
-          </h5>
-          <p class="mb-2 overflow-hidden text-xs">{{ (note.body || ' - ') | trunc(105) }}</p>
-          <p class="text-xs text-gray-600">{{ note.createdAt | date('dd/MM/yyyy HH:mm') }}</p>
-          <div
-            class="absolute flex items-center justify-center p-2 text-gray-400 bg-white cursor-pointer hover:text-red-300"
-            :style="{top: '0', right: '0'}"
-            @click.stop="deleteNote(note.id)"
-          >
-            <f-icon icon="trash" class="text-xs"/>
-          </div>
+    <div v-if="notes.length" class="overflow-y-auto">
+      <template v-if="pinnedNotes.length">
+        <h5 class="pl-2 mb-2 text-xs font-medium leading-none text-gray-500 uppercase">pinned</h5>
+        <div class="flex flex-wrap">
+          <NoteCard
+            v-for="note in pinnedNotes"
+            :key="note.id"
+            :note="note"
+            @select="selectNote"
+            @delete="deleteNote"
+          />
         </div>
-      </div>
+
+        <h5 class="pl-2 mt-6 mb-2 text-xs font-medium leading-none text-gray-500 uppercase">other</h5>
+        <div class="flex flex-wrap">
+          <NoteCard
+            v-for="note in notPinnedNotes"
+            :key="note.id"
+            :note="note"
+            @select="selectNote"
+            @delete="deleteNote"
+          />
+        </div>
+      </template>
+
+      <template v-else>
+        <div class="flex flex-wrap">
+          <NoteCard
+            v-for="note in filteredNotes"
+            :key="note.id"
+            :note="note"
+            @select="selectNote"
+            @delete="deleteNote"
+          />
+        </div>
+      </template>
     </div>
 
     <div v-else class="flex items-center justify-center flex-1">
@@ -60,7 +74,13 @@
 
 <script>
 import { mapState } from 'vuex'
+import NoteCard from './NoteCard'
+
 export default {
+  components: {
+    NoteCard,
+  },
+
   props: {
     notes: {
       type: Array,
@@ -88,6 +108,14 @@ export default {
       })
 
       return this.$_.orderBy(filtered, ['createdAt'], ['desc'])
+    },
+
+    pinnedNotes() {
+      return this.filteredNotes.filter(item => item.pinned)
+    },
+
+    notPinnedNotes() {
+      return this.filteredNotes.filter(item => !item.pinned)
     },
   },
 
