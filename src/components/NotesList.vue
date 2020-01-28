@@ -61,24 +61,24 @@
       <span class="text-2xl tracking-wide text-gray-400 uppercase">Empty list</span>
     </div>
 
-    <div
-      class="absolute flex items-center justify-center w-12 h-12 text-green-300 bg-white rounded-full shadow cursor-pointer hover:shadow-md hover:text-green-400"
-      :class="{'pulsate': animateCreateButton && !filteredNotes.length}"
-      :style="{bottom: '5px', right: '5px'}"
+    <FloatingButton
+      icon="plus"
+      :position-styles="{bottom: '5px', right: '5px'}"
+      :pulsate="animateCreateButton && !filteredNotes.length"
       @click="createNewNote"
-    >
-      <f-icon icon="plus" class="text-xl"/>
-    </div>
+    />
   </div>
 </template>
 
 <script>
 import { mapState } from 'vuex'
 import NoteCard from './NoteCard'
+import FloatingButton from './FloatingButton'
 
 export default {
   components: {
     NoteCard,
+    FloatingButton,
   },
 
   props: {
