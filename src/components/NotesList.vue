@@ -19,7 +19,7 @@
     </div>
 
     <!-- notes -->
-    <div class="flex flex-wrap overflow-y-auto">
+    <div v-if="filteredNotes.length" class="flex flex-wrap overflow-y-auto">
       <div
         v-for="note in filteredNotes"
         :key="note.id"
@@ -43,17 +43,23 @@
       </div>
     </div>
 
+    <div v-else class="flex items-center justify-center flex-1">
+      <span class="text-2xl tracking-wide text-gray-400 uppercase">Empty list</span>
+    </div>
+
     <div
-      class="absolute flex items-center justify-center w-8 h-8 text-gray-400 bg-white rounded-full shadow cursor-pointer hover:text-green-300"
+      class="absolute flex items-center justify-center w-12 h-12 text-green-300 bg-white rounded-full shadow cursor-pointer hover:shadow-md hover:text-green-400"
+      :class="{'glowing': animateCreateButton && !filteredNotes.length}"
       :style="{bottom: '5px', right: '5px'}"
       @click="createNewNote"
     >
-      <f-icon icon="plus" class="text-sm"/>
+      <f-icon icon="plus" class="text-xl"/>
     </div>
   </div>
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
   props: {
     notes: {
@@ -69,6 +75,8 @@ export default {
   },
 
   computed: {
+    ...mapState(['animateCreateButton']),
+
     filteredNotes() {
       if (!this.searchStr) {
         return this.$_.orderBy(this.notes, ['createdAt'], ['desc'])
@@ -81,6 +89,12 @@ export default {
 
       return this.$_.orderBy(filtered, ['createdAt'], ['desc'])
     },
+  },
+
+  mounted() {
+    window.setTimeout(() => {
+      this.$store.commit('TOGGLE_CREATE_BUTTON_ANIMATION', false)
+    }, 1000 * 2)
   },
 
   methods: {
@@ -100,5 +114,21 @@ export default {
 </script>
 
 <style>
+.glowing {
+  animation-name: glow;
+  animation-duration: 0.4s;
+  animation-iteration-count: 4;
+  animation-timing-function: ease-int-out;
+  animation-direction: alternate;
+}
 
+@keyframes glow {
+  from: {
+    box-shadow: 0px 0px 1px 15px rgba(104, 211, 145, 0.6);
+  }
+
+  to {
+    box-shadow: 0px 0px 1px 15px rgba(104, 211, 145, 0.6);
+  }
+}
 </style>
