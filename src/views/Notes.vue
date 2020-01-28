@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import shortid from 'shortid'
+import nanoid from 'nanoid'
 import NotesEditor from '@/components/NotesEditor'
 import NotesList from '@/components/NotesList'
 
@@ -69,7 +69,7 @@ export default {
 
     createNewNote() {
       const note = {
-        id: shortid.generate(),
+        id: nanoid(),
         title: '',
         body: '',
         createdAt: new Date(),
