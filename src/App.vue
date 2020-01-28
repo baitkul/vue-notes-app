@@ -50,9 +50,21 @@ export default {
 
   computed: {
     ...mapState(['settingsDialogVisible'])
+  },
+
+
+  mounted() {
+    window.addEventListener('beforeunload', this.cacheData)
+
+    this.$once('hook:beforeDestroy', () => {
+      window.removeEventListener('beforeunload', this.cacheData)
+    })
+  },
+
+  methods: {
+    cacheData() {
+      this.$store.dispatch('cacheData')
+    }
   }
 }
 </script>
-<style>
-
-</style>
