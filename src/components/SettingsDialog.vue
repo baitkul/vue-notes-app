@@ -4,6 +4,7 @@
     @click.self="dismissDialog"
   >
     <div class="w-6/12 px-4 py-2 overflow-hidden bg-white rounded shadow-lg">
+
       <div class="flex items-center">
         <h4 class="tracking-wide text-gray-700 uppercase">Settings</h4>
         <span
@@ -14,65 +15,71 @@
         </span>
       </div>
 
-      <el-form
-        ref="form"
-        class="mt-6"
-        :model="model"
-        label-position="left"
-        label-width="180px"
-      >
-        <el-form-item class="text-right">
-          <h5 slot="label" class="text-xs font-medium leading-loose text-gray-700 uppercase">Localstorage sync</h5>
-          <el-switch v-model="model.syncToLocalStorage"/>
-        </el-form-item>
+      <div class="mt-6">
+        <div class="flex items-center justify-between">
+          <h5 slot="label" class="text-xs font-medium text-gray-700 uppercase">Localstorage sync</h5>
+          <el-switch v-model="localStorageSync"/>
+        </div>
 
-        <el-form-item class="text-right">
-          <h5 slot="label" class="text-xs font-medium leading-loose text-gray-700 uppercase">App language</h5>
-          <el-radio-group
-            v-model="model.locale"
-            size="mini"
-            class="flex justify-end w-full"
-          >
-            <el-radio label="ru" class="flex items-center">
-              <span class="flex items-center">
-                <img src="https://www.countryflags.io/ru/shiny/16.png"/>
-                <span class="ml-2 text-xs font-normal leading-loose uppercase">ru</span>
-              </span>
-            </el-radio>
-            <el-radio label="en" class="flex items-center">
-              <span class="flex items-center">
-                <img src="https://www.countryflags.io/us/shiny/16.png"/>
-                <span class="ml-2 text-xs font-normal leading-loose uppercase">en</span>
-              </span>
-            </el-radio>
-          </el-radio-group>
-        </el-form-item>
-      </el-form>
+        <div class="flex items-center justify-between mt-4">
+          <h5 slot="label" class="text-xs font-medium text-gray-700 uppercase">App language</h5>
+          <div class="flex justify-end">
+            <button
+              class="flex items-center px-2 border rounded outline-none"
+              :class="{'border-green-500': locale === 'en'}"
+              @click="locale = 'en'"
+            >
+              <img src="https://www.countryflags.io/us/shiny/16.png"/>
+              <span class="ml-2 text-xs font-normal leading-loose uppercase">en</span>
+            </button>
+            <button
+              class="flex items-center px-2 ml-2 border rounded outline-none"
+              :class="{'border-green-500': locale === 'ru'}"
+              @click="locale = 'ru'"
+            >
+              <img src="https://www.countryflags.io/ru/shiny/16.png"/>
+              <span class="ml-2 text-xs font-normal leading-loose uppercase">ru</span>
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import {
-  Form,
-  FormItem,
   Switch,
-  Radio,
-  RadioGroup,
 } from 'element-ui'
 
 export default {
   components: {
-    ElForm: Form,
-    ElFormItem: FormItem,
     ElSwitch: Switch,
-    ElRadio: Radio,
-    ElRadioGroup: RadioGroup,
   },
 
   data() {
     return {
-      model: {}
+    }
+  },
+
+  computed: {
+    localStorageSync: {
+      get() {
+        return this.$store.state.settings.localStorageSync
+      },
+      set(v) {
+        console.log(v)
+        this.$store.commit('TOGGLE_LOCALSTORAGE_SYNC', v)
+      }
+    },
+
+    locale: {
+      get() {
+        return this.$store.state.settings.locale
+      },
+      set(v) {
+        this.$store.commit('SET_LOCALE', v)
+      }
     }
   },
 
