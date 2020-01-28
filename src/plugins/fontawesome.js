@@ -12,6 +12,7 @@ import {
   faCog,
   faBackspace,
   faArrowLeft,
+  faThumbtack
 } from '@fortawesome/free-solid-svg-icons'
 
 import {
@@ -29,6 +30,7 @@ library.add(
   faCog,
   faBackspace,
   faArrowLeft,
+  faThumbtack,
 
   // brands
   faGithub,
