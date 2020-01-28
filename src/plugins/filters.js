@@ -3,7 +3,6 @@ import get from 'lodash-es/get'
 import truncate from 'lodash-es/truncate'
 import format from 'date-fns/format'
 import parseISO from 'date-fns/parseISO'
-import ruLocale from 'date-fns/locale/ru'
 
 const filters = {}
 
@@ -17,11 +16,11 @@ filters.trunc = function (value, length = 100) {
 
 filters.date = function (value, dateFormat = 'dd/MM/yyyy') {
   if (value instanceof Date || Object.prototype.toString.call(value) === '[object Date]') {
-    return format(value, dateFormat, { locale: ruLocale })
+    return format(value, dateFormat)
   }
 
   if (typeof value === 'string' && value !== ' - ') {
-    return format(parseISO(value), dateFormat, { locale: ruLocale })
+    return format(parseISO(value), dateFormat)
   }
 
   return ' - '
