@@ -1,12 +1,19 @@
 <template>
   <div class="flex flex-col h-full">
-    <div class="relative mb-4">
-        <span
-          class="py-4 text-gray-700 cursor-pointer"
-          @click="$emit('back')"
-        >
+    <div class="relative flex mb-4">
+        <button class="py-2 leading-none text-gray-600 hover:text-gray-800" @click="$emit('back')">
           <f-icon icon="arrow-left" />
-        </span>
+        </button>
+        <button class="p-2 ml-auto leading-none text-gray-600 hover:text-gray-800" @click="$emit('back')">
+          <f-icon icon="bell" />
+        </button>
+        <button
+          class="p-2 ml-4 leading-none text-gray-600 hover:text-gray-800"
+          :class="{'text-gray-600 hover:text-gray-800': !entity.pinned, 'text-green-400 hover:text-green-500': entity.pinned}"
+          @click="entity.pinned = !entity.pinned"
+        >
+          <f-icon icon="thumbtack" />
+        </button>
       </div>
 
       <div>
