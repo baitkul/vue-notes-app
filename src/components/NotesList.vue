@@ -3,7 +3,7 @@
     <!-- search input -->
     <div class="relative mb-8">
       <input
-        v-model='searchStr'
+        v-model="searchStr"
         class="w-full px-4 py-2 text-sm bg-white rounded-full shadow"
         type="text"
         placeholder="Search note"
@@ -73,6 +73,7 @@
 
 <script>
 import { mapState } from 'vuex'
+import nanoid from 'nanoid'
 import NoteCard from './NoteCard'
 import FloatingButton from './FloatingButton'
 
@@ -80,13 +81,6 @@ export default {
   components: {
     NoteCard,
     FloatingButton,
-  },
-
-  props: {
-    notes: {
-      type: Array,
-      required: true
-    }
   },
 
   data() {
@@ -97,6 +91,15 @@ export default {
 
   computed: {
     ...mapState(['animateCreateButton']),
+
+    notes: {
+      get() {
+        return this.$store.state.notes
+      },
+      set(v) {
+        return this.$store.commit('UPDATE_NOTES', v)
+      }
+    },
 
     filteredNotes() {
       if (!this.searchStr) {
@@ -132,20 +135,29 @@ export default {
 
   methods: {
     createNewNote() {
-      this.$emit('create')
+      const note = {
+        id: nanoid(),
+        title: '',
+        body: '',
+        createdAt: new Date(),
+        pinned: false,
+      }
+
+      this.notes.push(note)
+      this.selectNote(note)
     },
 
     deleteNote(noteId) {
-      this.$emit('delete', noteId)
+      const idx = this.notes.findIndex(item => item.id === noteId)
+
+      if (idx !== -1) {
+        this.notes.splice(idx, 1)
+      }
     },
 
     selectNote(note) {
-      this.$emit('select', note)
+      this.$store.commit('SET_ACTIVE_NOTE', note)
     },
   }
 }
 </script>
-
-<style>
-
-</style>

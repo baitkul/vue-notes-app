@@ -40,20 +40,13 @@
 
 <script>
 export default {
-  props: {
-    note: {
-      type: Object,
-      required: true,
-    }
-  },
-
   computed: {
     entity: {
       get() {
-        return this.note
+        return this.$store.state.activeNote
       },
       set(v) {
-        this.$emit('update:note', v)
+        this.$store.commit('SET_ACTIVE_NOTE', v)
       }
     }
   },
@@ -74,12 +67,8 @@ export default {
     },
 
     goBack() {
-      this.$emit('back')
+      this.$store.commit('SET_ACTIVE_NOTE', undefined)
     }
   }
 }
 </script>
-
-<style>
-
-</style>
