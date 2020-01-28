@@ -62,6 +62,7 @@
     </div>
 
     <FloatingButton
+      title="Create note"
       icon="plus"
       :position-styles="{bottom: '5px', right: '5px'}"
       :pulsate="animateCreateButton && !filteredNotes.length"
