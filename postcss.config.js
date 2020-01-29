@@ -7,6 +7,7 @@ const purgecss = postcssPurgecss({
   content: [
     './public/**/*.html',
     './src/**/*.vue',
+    './node_modules/element-ui/packages/**/*.vue',
   ],
 
   // Include any special characters you're using in this regular expression.
@@ -15,7 +16,11 @@ const purgecss = postcssPurgecss({
 
   // Whitelist auto generated classes for transitions and router links.
   // From: https://github.com/ky-is/vue-cli-plugin-tailwind
-  whitelistPatterns: [/-(leave|enter|appear)(|-(to|from|active))$/, /^(?!(|.*?:)cursor-move).+-move$/, /^router-link(|-exact)-active$/],
+  whitelistPatterns: [
+    /-(leave|enter|appear)(|-(to|from|active))$/,
+    /^(?!(|.*?:)cursor-move).+-move$/,
+    /^router-link(|-exact)-active$/,
+  ],
 })
 
 module.exports = {

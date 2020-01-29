@@ -3,10 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "dev": "vue-cli-service serve"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.26",
@@ -25,6 +25,7 @@
     "vuex": "^3.1.2"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.8.3",
     "@fortawesome/fontawesome-free": "^5.12.0",
     "@fullhuman/postcss-purgecss": "^2.0.5",
     "@intlify/vue-i18n-loader": "^0.6.1",
