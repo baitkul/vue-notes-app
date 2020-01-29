@@ -76,6 +76,8 @@ import { mapState } from 'vuex'
 import nanoid from 'nanoid'
 import NoteCard from './NoteCard'
 import FloatingButton from './FloatingButton'
+import orderBy from 'lodash-es/orderBy'
+
 
 export default {
   components: {
@@ -103,7 +105,7 @@ export default {
 
     filteredNotes() {
       if (!this.searchStr) {
-        return this.$_.orderBy(this.notes, ['createdAt'], ['desc'])
+        return orderBy(this.notes, ['createdAt'], ['desc'])
       }
 
       const filtered = this.notes.filter(item => {
@@ -111,7 +113,7 @@ export default {
           item.body.toLowerCase().includes(this.searchStr.toLowerCase())
       })
 
-      return this.$_.orderBy(filtered, ['createdAt'], ['desc'])
+      return orderBy(filtered, ['createdAt'], ['desc'])
     },
 
     pinnedNotes() {
