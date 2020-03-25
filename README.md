@@ -3,6 +3,14 @@
 
 ![Deploy to GitHub Pages](https://github.com/baitkul/vue-notes-app/workflows/Deploy%20to%20GitHub%20Pages/badge.svg?event=push)
 
+<p align="center">
+  <img
+    src="https://raw.githubusercontent.com/baitkul/vue-notes-app/master/public/preview.png"
+    alt="Vue notes app preview"
+    height="300px"
+  />
+</p>
+
 Demo [link](https://baitkul.github.io/vue-notes-app/)
 
 ### Built using
